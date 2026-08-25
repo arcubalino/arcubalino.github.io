@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ranil B. Jaramillo · Technology Leader, Enterprise Delivery &amp; Cybersecurity</title>
+<meta name="description" content="Ranil B. Jaramillo, technology leader with 10+ years building and securing enterprise systems. Nationwide fintech delivery, IT leadership, and hands-on cybersecurity (VAPT)." />
+<link rel="icon" type="image/png" href="assets/favicon.png" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+<!-- Social share (Open Graph + Twitter). NOTE: update the domain in the URLs below if you deploy somewhere other than arcubalino.github.io -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Ranil B. Jaramillo — Technology Leader & Cybersecurity" />
+<meta property="og:description" content="10+ years building and securing enterprise systems. Nationwide fintech delivery, IT leadership, and hands-on cybersecurity (VAPT)." />
+<meta property="og:image" content="https://arcubalino.github.io/assets/og.png" />
+<meta property="og:url" content="https://arcubalino.github.io/" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Ranil B. Jaramillo — Technology Leader & Cybersecurity" />
+<meta name="twitter:description" content="Building and securing enterprise systems for over a decade." />
+<meta name="twitter:image" content="https://arcubalino.github.io/assets/og.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#070a12;
+    --bg-2:#0b1120;
+    --surface:#0f1728;
+    --surface-2:#141f38;
+    --grey:#1f2a44;
+    --line:rgba(150,175,230,.11);
+    --line-strong:rgba(150,175,230,.22);
+    --royal:#2563eb;
+    --blue:#3b82f6;
+    --blue-bright:#68a6ff;
+    --darkblue:#1e3a8a;
+    --text:#eef2fb;
+    --muted:#a2b3d4;
+    --muted-2:#65769c;
+    --glow:rgba(37,99,235,.4);
+    --maxw:1180px;
+    --r:18px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;line-height:1.12;letter-spacing:-.025em}
+  a{color:inherit;text-decoration:none}
+  .mono{font-family:'JetBrains Mono',monospace}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
+  section{position:relative}
+
+  /* ---------- scroll progress ---------- */
+  #prog{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;background:linear-gradient(90deg,var(--royal),var(--blue-bright));box-shadow:0 0 12px var(--glow)}
+
+  /* ---------- Background ambience ---------- */
+  .bg-fx{position:fixed;inset:0;z-index:-3;pointer-events:none}
+  .bg-fx::before{content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(60% 45% at 12% -5%, rgba(37,99,235,.22), transparent 60%),
+      radial-gradient(55% 45% at 92% 2%, rgba(30,58,138,.30), transparent 55%),
+      radial-gradient(80% 60% at 50% 118%, rgba(59,130,246,.12), transparent 60%);}
+  .grid-fx{position:fixed;inset:0;z-index:-2;pointer-events:none;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:52px 52px;
+    -webkit-mask-image:radial-gradient(ellipse 85% 65% at 50% 0%,#000 15%,transparent 72%);
+            mask-image:radial-gradient(ellipse 85% 65% at 50% 0%,#000 15%,transparent 72%);opacity:.55}
+  /* film grain */
+  .grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.045;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .orb{position:fixed;border-radius:50%;filter:blur(80px);z-index:-2;opacity:.45;animation:float 20s ease-in-out infinite}
+  .orb.a{width:440px;height:440px;background:var(--royal);top:-140px;left:-120px}
+  .orb.b{width:380px;height:380px;background:var(--darkblue);top:42%;right:-160px;animation-delay:-7s}
+  @keyframes float{0%,100%{transform:translate(0,0)}50%{transform:translate(46px,54px)}}
+  /* hero cursor spotlight */
+  #spot{position:absolute;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(340px circle at var(--mx,50%) var(--my,30%), rgba(59,130,246,.14), transparent 60%);
+    opacity:0;transition:opacity .4s}
+  .hero:hover #spot{opacity:1}
+
+  /* ---------- Nav ---------- */
+  header.nav{position:fixed;top:14px;left:0;right:0;z-index:50;transition:top .3s}
+  .nav-inner{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;
+    padding:11px 18px;border:1px solid var(--line);background:rgba(11,17,32,.72);backdrop-filter:blur(16px);border-radius:15px}
+  .brand{font-family:'Space Grotesk';font-weight:700;font-size:16px;display:flex;align-items:center;gap:10px}
+  .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--blue);box-shadow:0 0 12px var(--glow)}
+  .nav-links{display:flex;gap:4px;align-items:center}
+  .nav-links a{padding:8px 14px;font-size:14px;color:var(--muted);border-radius:9px;transition:.2s}
+  .nav-links a:hover{color:var(--text);background:rgba(59,130,246,.12)}
+  .nav-cta{background:var(--royal);color:#fff !important;font-weight:600;box-shadow:0 4px 18px var(--glow)}
+  .nav-cta:hover{background:var(--blue) !important}
+  .burger{display:none;background:none;border:1px solid var(--line);border-radius:9px;padding:8px;cursor:pointer}
+  .burger span{display:block;width:20px;height:2px;background:var(--text);margin:4px 0;transition:.2s}
+  @media(max-width:860px){
+    .nav-links{position:absolute;top:66px;right:18px;left:18px;flex-direction:column;align-items:stretch;
+      background:rgba(11,17,32,.97);backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:15px;padding:10px;
+      transform:translateY(-12px);opacity:0;pointer-events:none;transition:.25s}
+    .nav-links.open{transform:none;opacity:1;pointer-events:auto}
+    .burger{display:block}
+  }
+
+  /* ---------- Reveal ---------- */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}.d5{transition-delay:.4s}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:150px 0 70px;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center;position:relative;z-index:1}
+  @media(max-width:940px){.hero-grid{grid-template-columns:1fr;gap:44px;text-align:center}}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12.5px;color:var(--blue-bright);font-family:'JetBrains Mono';letter-spacing:.03em;
+    border:1px solid var(--line-strong);padding:7px 15px;border-radius:999px;margin-bottom:26px;background:rgba(59,130,246,.07)}
+  .eyebrow .pulse{width:8px;height:8px;border-radius:50%;background:#34d399;box-shadow:0 0 10px #34d399;animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  .hero h1{font-size:clamp(46px,8.2vw,92px);font-weight:700;letter-spacing:-.035em;line-height:.98;margin-bottom:18px}
+  .hero h1 .grad{background:linear-gradient(115deg,#fff 8%,var(--blue-bright) 52%,var(--royal) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .role{font-family:'Space Grotesk';font-size:clamp(15px,2.4vw,20px);color:var(--muted);font-weight:500;margin-bottom:22px}
+  .role b{color:var(--blue-bright);font-weight:600}
+  .lead{max-width:520px;color:var(--muted);font-size:clamp(15px,1.9vw,17px);margin-bottom:32px}
+  @media(max-width:940px){.lead{margin-left:auto;margin-right:auto}}
+  .btns{display:flex;gap:14px;flex-wrap:wrap}
+  @media(max-width:940px){.btns{justify-content:center}}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:12px;font-weight:600;font-size:15px;cursor:pointer;transition:.22s;border:1px solid transparent}
+  .btn-primary{background:var(--royal);color:#fff;box-shadow:0 6px 26px var(--glow)}
+  .btn-primary:hover{background:var(--blue);transform:translateY(-2px);box-shadow:0 10px 34px var(--glow)}
+  .btn-ghost{border-color:var(--line-strong);color:var(--text);background:rgba(255,255,255,.02)}
+  .btn-ghost:hover{border-color:var(--blue);background:rgba(59,130,246,.1);transform:translateY(-2px)}
+  .btn svg{width:17px;height:17px}
+  .hero-meta{display:flex;gap:28px;margin-top:38px;flex-wrap:wrap}
+  @media(max-width:940px){.hero-meta{justify-content:center}}
+  .hero-meta .m .n{font-family:'Space Grotesk';font-size:26px;font-weight:700;color:#fff}
+  .hero-meta .m .n .u{color:var(--blue-bright)}
+  .hero-meta .m .l{font-size:12.5px;color:var(--muted-2);margin-top:2px}
+  .hero-meta .sep{width:1px;background:var(--line);align-self:stretch}
+
+  /* portrait */
+  .portrait-wrap{position:relative;justify-self:center;width:min(420px,86vw);aspect-ratio:1/1.16}
+  .portrait-ring{position:absolute;inset:-16%;border-radius:50%;background:conic-gradient(from 0deg,var(--royal),var(--blue-bright),var(--darkblue),#7dd3fc,var(--royal));
+    filter:blur(34px);opacity:.5;animation:spin 14s linear infinite;z-index:0}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .portrait-glow{position:absolute;inset:6%;border-radius:50%;background:radial-gradient(circle,var(--glow),transparent 68%);filter:blur(26px);z-index:0}
+  .portrait-card{position:absolute;inset:0;border-radius:24px;overflow:hidden;border:1px solid var(--line-strong);
+    background:linear-gradient(170deg,rgba(30,58,138,.35),rgba(7,10,18,.7));z-index:1;
+    -webkit-mask-image:radial-gradient(135% 130% at 50% 46%,#000 74%,transparent 100%);
+            mask-image:radial-gradient(135% 130% at 50% 46%,#000 74%,transparent 100%)}
+  .portrait-card img{position:absolute;bottom:0;left:50%;transform:translateX(-50%);height:99%;width:auto;max-width:none;filter:drop-shadow(0 20px 40px rgba(0,0,0,.5));
+    transition:transform .2s ease-out}
+  .float-badge{position:absolute;z-index:3;display:flex;align-items:center;gap:9px;padding:10px 14px;border-radius:12px;
+    background:rgba(11,17,32,.85);backdrop-filter:blur(10px);border:1px solid var(--line-strong);font-size:13px;font-weight:600;
+    box-shadow:0 10px 30px rgba(0,0,0,.35);animation:bob 5s ease-in-out infinite}
+  .float-badge svg{width:16px;height:16px}
+  .fb-1{top:8%;left:-6%;color:#7dd3fc}
+  .fb-2{bottom:16%;right:-8%;animation-delay:-2.5s;color:#86efac}
+  .fb-3{bottom:-3%;left:6%;animation-delay:-1.2s;color:var(--blue-bright)}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+  @media(max-width:940px){.fb-1{left:2%}.fb-2{right:2%}}
+
+  /* ---------- Marquee ---------- */
+  .marquee{margin-top:64px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 0;overflow:hidden;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+  .marquee-track{display:flex;gap:44px;width:max-content;animation:scroll 30s linear infinite}
+  .marquee:hover .marquee-track{animation-play-state:paused}
+  .marquee-track span{font-family:'JetBrains Mono';font-size:15px;color:var(--muted-2);white-space:nowrap;display:flex;align-items:center;gap:44px}
+  .marquee-track span::after{content:"◆";color:var(--blue);font-size:8px}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  /* ---------- Section shell ---------- */
+  .sec{padding:100px 0}
+  .sec-head{margin-bottom:56px;max-width:760px;position:relative}
+  .sec-num{position:absolute;right:0;top:-30px;font-family:'Space Grotesk';font-size:120px;font-weight:700;color:rgba(59,130,246,.06);line-height:1;pointer-events:none;z-index:-1}
+  @media(max-width:760px){.sec-num{font-size:80px;top:-16px}}
+  .kicker{font-family:'JetBrains Mono';font-size:13px;color:var(--blue-bright);letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;gap:12px;margin-bottom:16px}
+  .kicker::before{content:"";width:30px;height:1px;background:var(--blue)}
+  .sec-head h2{font-size:clamp(30px,4.8vw,46px);font-weight:700;margin-bottom:14px}
+  .sec-head p{color:var(--muted);font-size:17px}
+
+  /* ---------- Capabilities ---------- */
+  .caps{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  @media(max-width:760px){.caps{grid-template-columns:1fr}}
+  .cap{position:relative;border:1px solid var(--line);border-radius:var(--r);padding:32px;background:var(--surface);overflow:hidden;transition:.3s}
+  .cap::after{content:"";position:absolute;inset:0;border-radius:var(--r);padding:1px;
+    background:linear-gradient(130deg,var(--blue),transparent 42%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:.3s}
+  .cap:hover{transform:translateY(-5px);border-color:transparent;background:var(--surface-2)}
+  .cap:hover::after{opacity:1}
+  .cap .ic{width:52px;height:52px;border-radius:13px;display:grid;place-items:center;background:rgba(59,130,246,.12);border:1px solid var(--line-strong);margin-bottom:22px}
+  .cap .ic svg{width:25px;height:25px;stroke:var(--blue-bright)}
+  .cap h3{font-size:21px;margin-bottom:10px}
+  .cap p{color:var(--muted);font-size:15px}
+
+  /* ---------- Work ---------- */
+  .work{display:flex;flex-direction:column;gap:22px}
+  .proj{display:grid;grid-template-columns:210px 1fr;gap:32px;border:1px solid var(--line);border-radius:var(--r);padding:34px;background:var(--surface);transition:.3s;position:relative;overflow:hidden}
+  .proj::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(var(--royal),var(--blue-bright));transform:scaleY(0);transform-origin:top;transition:.4s}
+  .proj:hover{border-color:var(--line-strong);background:var(--surface-2);transform:translateY(-3px)}
+  .proj:hover::before{transform:scaleY(1)}
+  .proj .side .tag{font-family:'JetBrains Mono';font-size:12px;color:var(--blue-bright);border:1px solid var(--line-strong);padding:5px 12px;border-radius:999px;display:inline-block;margin-bottom:14px}
+  .proj .side h3{font-size:23px;margin-bottom:6px}
+  .proj .side .meta{font-size:13px;color:var(--muted-2);font-family:'JetBrains Mono'}
+  .proj .body p{color:var(--muted);font-size:15px;margin-bottom:16px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-size:12.5px;color:var(--muted);background:rgba(150,175,230,.06);border:1px solid var(--line);padding:5px 12px;border-radius:8px;transition:.2s}
+  .proj:hover .chip{border-color:var(--line-strong)}
+  @media(max-width:720px){.proj{grid-template-columns:1fr;gap:18px;padding:28px}}
+
+  /* ---------- Security ---------- */
+  .sec-security{padding:100px 0}
+  .sec-panel{border:1px solid var(--line-strong);border-radius:24px;padding:clamp(28px,5vw,56px);position:relative;overflow:hidden;
+    background:linear-gradient(150deg,rgba(30,58,138,.3),rgba(7,10,18,.55) 55%)}
+  .sec-panel::before{content:"";position:absolute;top:-40px;right:-40px;width:360px;height:360px;background:radial-gradient(circle,var(--glow),transparent 70%);pointer-events:none}
+  .sec-panel .kicker{color:#7dd3fc}
+  .sec-panel h2{font-size:clamp(28px,4.2vw,44px);max-width:640px;margin-bottom:16px;letter-spacing:-.025em}
+  .sec-panel .intro{color:var(--muted);max-width:660px;font-size:16.5px;margin-bottom:38px}
+  .sec-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:start}
+  @media(max-width:860px){.sec-grid{grid-template-columns:1fr;gap:28px}}
+  .feat-list{list-style:none;display:flex;flex-direction:column;gap:16px}
+  .feat-list li{display:flex;gap:14px;align-items:flex-start}
+  .feat-list .tick{flex:none;width:24px;height:24px;border-radius:7px;display:grid;place-items:center;background:rgba(59,130,246,.16);margin-top:2px}
+  .feat-list .tick svg{width:14px;height:14px;stroke:var(--blue-bright)}
+  .feat-list b{color:var(--text);font-weight:600}
+  .feat-list span{color:var(--muted);font-size:14.5px}
+  .terminal{border:1px solid var(--line-strong);border-radius:14px;background:#05070d;overflow:hidden;font-family:'JetBrains Mono';font-size:13px;box-shadow:0 24px 56px rgba(0,0,0,.45)}
+  .term-bar{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.02)}
+  .term-bar i{width:11px;height:11px;border-radius:50%;display:block}
+  .term-bar i:nth-child(1){background:#ff5f57}.term-bar i:nth-child(2){background:#febc2e}.term-bar i:nth-child(3){background:#28c840}
+  .term-bar .t{margin-left:8px;color:var(--muted-2);font-size:12px}
+  .term-body{padding:18px;line-height:1.9;color:#c7d3ee;white-space:pre-wrap}
+  .term-body .c{color:#5c6b8f}.term-body .g{color:#34d399}.term-body .b{color:var(--blue-bright)}.term-body .y{color:#fbbf24}.term-body .p{color:#c084fc}
+  .cursor-blink{display:inline-block;width:8px;height:15px;background:var(--blue-bright);vertical-align:middle;animation:blink 1.1s step-end infinite}
+  @keyframes blink{50%{opacity:0}}
+
+  /* ---------- Timeline ---------- */
+  .timeline{position:relative;margin-top:10px;padding-left:34px}
+  .timeline::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--blue),transparent)}
+  .tl{position:relative;padding-bottom:40px}
+  .tl:last-child{padding-bottom:0}
+  .tl::before{content:"";position:absolute;left:-33px;top:5px;width:18px;height:18px;border-radius:50%;background:var(--bg);border:2px solid var(--blue);box-shadow:0 0 0 4px rgba(37,99,235,.14)}
+  .tl.now::before{background:var(--blue);box-shadow:0 0 0 4px rgba(37,99,235,.25),0 0 16px var(--glow)}
+  .tl .when{font-family:'JetBrains Mono';font-size:12.5px;color:var(--blue-bright);margin-bottom:5px}
+  .tl h3{font-size:19px;margin-bottom:2px}
+  .tl .co{color:var(--muted);font-size:14.5px;margin-bottom:8px}
+  .tl .co b{color:var(--muted)}
+  .tl p{color:var(--muted-2);font-size:14.5px;max-width:680px}
+
+  /* ---------- Skills ---------- */
+  .skills{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media(max-width:820px){.skills{grid-template-columns:1fr}}
+  .skill-card{border:1px solid var(--line);border-radius:var(--r);padding:26px;background:var(--surface);transition:.25s}
+  .skill-card:hover{border-color:var(--line-strong);background:var(--surface-2)}
+  .skill-card h4{font-size:15px;color:var(--blue-bright);font-family:'JetBrains Mono';margin-bottom:16px}
+  .skill-card .tags{display:flex;flex-wrap:wrap;gap:8px}
+  .skill-card .tags span{font-size:13px;color:var(--muted);background:rgba(150,175,230,.06);border:1px solid var(--line);padding:5px 11px;border-radius:8px}
+
+  /* ---------- Certs ---------- */
+  .certs{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  @media(max-width:720px){.certs{grid-template-columns:1fr}}
+  .cert{display:flex;align-items:center;gap:16px;border:1px solid var(--line);border-radius:12px;padding:18px 22px;background:var(--surface);transition:.25s}
+  .cert:hover{border-color:var(--line-strong);transform:translateX(4px)}
+  .cert .badge{flex:none;width:42px;height:42px;border-radius:10px;display:grid;place-items:center;background:rgba(59,130,246,.12);border:1px solid var(--line-strong)}
+  .cert .badge svg{width:20px;height:20px;stroke:var(--blue-bright)}
+  .cert h4{font-size:15.5px;margin-bottom:2px}
+  .cert span{font-size:13px;color:var(--muted-2)}
+
+  /* ---------- Contact ---------- */
+  .contact{text-align:center;padding:120px 0}
+  .contact h2{font-size:clamp(32px,5.4vw,58px);margin-bottom:18px;letter-spacing:-.03em}
+  .contact h2 .grad{background:linear-gradient(120deg,#fff,var(--blue-bright));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .contact p{color:var(--muted);max-width:540px;margin:0 auto 34px;font-size:17px}
+  .contact-methods{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .cm{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border:1px solid var(--line-strong);border-radius:12px;color:var(--muted);font-size:14.5px;transition:.22s;font-family:'JetBrains Mono'}
+  .cm:hover{color:var(--text);border-color:var(--blue);background:rgba(59,130,246,.1);transform:translateY(-2px)}
+  .cm svg{width:17px;height:17px;stroke:var(--blue-bright)}
+
+  footer{border-top:1px solid var(--line);padding:34px 0;text-align:center;color:var(--muted-2);font-size:13.5px}
+  footer .mono{color:var(--muted)}
+
+  /* ---------- Typed role ---------- */
+  .type-line{font-family:'Space Grotesk';font-weight:600;font-size:clamp(21px,3.6vw,32px);letter-spacing:-.02em;color:var(--muted);margin:6px 0 24px;min-height:1.35em}
+  .type-line .tw{color:var(--blue-bright)}
+  .type-line .caret{display:inline-block;width:3px;height:1.05em;background:var(--blue-bright);margin-left:3px;vertical-align:-.18em;border-radius:2px;animation:blink 1s step-end infinite}
+
+  /* ---------- Logo wall ---------- */
+  .logo-wall{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:40px}
+  @media(max-width:620px){.logo-wall{gap:10px;justify-content:center}}
+  .logo-chip{display:flex;flex-direction:column;align-items:center;gap:9px;width:96px;padding:18px 10px;border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--muted-2);transition:.25s;cursor:default}
+  .logo-chip:hover{color:var(--blue-bright);border-color:var(--line-strong);background:var(--surface-2);transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,.32)}
+  .logo-chip svg{width:30px;height:30px;fill:currentColor;transition:.25s}
+  .logo-chip span{font-size:11.5px;color:var(--muted);font-family:'JetBrains Mono';letter-spacing:.01em;text-align:center;line-height:1.2}
+  @media(max-width:620px){.logo-chip{width:80px;padding:14px 8px}.logo-chip svg{width:26px;height:26px}}
+
+  /* ---------- Projects ---------- */
+  .proj-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:20px}
+  @media(max-width:820px){.proj-grid{grid-template-columns:1fr}}
+  .build{position:relative;border:1px solid var(--line);border-radius:var(--r);padding:30px;background:var(--surface);transition:.3s;overflow:hidden;display:flex;flex-direction:column}
+  .build:hover{border-color:var(--line-strong);background:var(--surface-2);transform:translateY(-4px)}
+  .build.feat{grid-row:span 2;border-color:transparent;background:linear-gradient(180deg,var(--surface-2),var(--surface))}
+  .build.feat::before{content:"";position:absolute;inset:0;border-radius:var(--r);padding:1px;background:linear-gradient(140deg,var(--blue),transparent 50%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+  .build.feat::after{content:"";position:absolute;top:-60px;right:-60px;width:220px;height:220px;background:radial-gradient(circle,var(--glow),transparent 70%);pointer-events:none}
+  .build.feat > *{position:relative;z-index:1}
+  .finding .fh-l{display:flex;align-items:center}
+  .finding .rec{width:8px;height:8px;border-radius:50%;background:#ff5f57;margin-right:8px;box-shadow:0 0 8px #ff5f57;animation:pulse 1.6s infinite}
+  .build .idx{font-family:'JetBrains Mono';font-size:12px;color:var(--muted-2);letter-spacing:.06em}
+  .build .btag{display:inline-block;font-family:'JetBrains Mono';font-size:11.5px;color:var(--blue-bright);border:1px solid var(--line-strong);padding:4px 11px;border-radius:999px;margin:14px 0 12px}
+  .build h3{font-size:21px;margin-bottom:9px}
+  .build p{color:var(--muted);font-size:14.5px;margin-bottom:16px}
+  .build .chips{margin-top:auto}
+  .finding{margin:6px 0 18px;border:1px solid var(--line-strong);border-radius:12px;background:#05070d;font-family:'JetBrains Mono';font-size:12.5px;overflow:hidden}
+  .finding .fh{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.02);color:var(--muted-2)}
+  .finding .cvss{color:#fbbf24;font-weight:600}
+  .finding .fb{padding:14px;line-height:1.9;color:#c7d3ee}
+  .finding .fb .k{color:#5c6b8f}
+  .finding .fb .r{color:#c084fc}
+  .finding .fb .g{color:#34d399}
+  .finding .redact{background:#33406b;color:transparent;border-radius:3px;padding:0 2px;user-select:none}
+
+  /* ---------- Timeline accordion ---------- */
+  .tl-head{width:100%;text-align:left;background:none;border:none;cursor:pointer;color:inherit;padding:0;display:flex;align-items:flex-start;gap:14px;font-family:inherit}
+  .tl-head .tl-main{flex:1}
+  .tl-head .chev{flex:none;margin-top:4px;width:22px;height:22px;border:1px solid var(--line-strong);border-radius:7px;display:grid;place-items:center;transition:.25s;color:var(--blue-bright)}
+  .tl-head .chev svg{width:13px;height:13px;stroke:currentColor;transition:transform .3s}
+  .tl.open .chev{background:rgba(59,130,246,.14)}
+  .tl.open .chev svg{transform:rotate(180deg)}
+  .tl-head:hover .chev{border-color:var(--blue)}
+  .tl-body{overflow:hidden;max-height:0;transition:max-height .38s ease,opacity .3s;opacity:0}
+  .tl.open .tl-body{opacity:1}
+  .tl-body-inner{padding-top:12px}
+  .tl-body ul{list-style:none;margin-top:10px;display:flex;flex-direction:column;gap:8px}
+  .tl-body li{position:relative;padding-left:18px;color:var(--muted-2);font-size:14px}
+  .tl-body li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:2px;background:var(--blue)}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important;scroll-behavior:auto !important}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<div class="bg-fx"></div>
+<div class="grid-fx"></div>
+<div class="grain"></div>
+<div class="orb a"></div>
+<div class="orb b"></div>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand"><span class="dot"></span> Ranil&nbsp;Jaramillo</a>
+    <nav class="nav-links" id="navlinks">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#projects">Projects</a>
+      <a href="#security">Security</a>
+      <a href="#journey">Journey</a>
+      <a href="#contact" class="nav-cta">Get in touch</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div id="spot"></div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow reveal"><span class="pulse"></span> Technology Leader · Cybersecurity</div>
+      <h1 class="reveal d1">Ranil B.<br><span class="grad">Jaramillo</span></h1>
+      <div class="type-line reveal d2">I'm a <span class="tw" id="typeword">software engineer</span><span class="caret"></span></div>
+      <p class="lead reveal d3">More than a decade across engineering, IT leadership, and security. I've built an IT department on my own and helped run nationwide fintech platforms used across the Philippines. I still write code and test systems for weaknesses.</p>
+      <div class="btns reveal d4">
+        <a href="#work" class="btn btn-primary">View my work
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      </div>
+      <div class="hero-meta reveal d5">
+        <div class="m"><div class="n" data-since="2014" data-suffix="+">0</div><div class="l">Years in tech</div></div>
+        <div class="sep"></div>
+        <div class="m"><div class="n" data-count="30" data-suffix="+">0</div><div class="l">People led</div></div>
+        <div class="sep"></div>
+        <div class="m"><div class="n" data-text="VAPT">VAPT</div><div class="l">Certified</div></div>
+      </div>
+    </div>
+
+    <div class="portrait-wrap reveal d2" id="portrait">
+      <div class="portrait-ring"></div>
+      <div class="portrait-glow"></div>
+      <div class="portrait-card">
+        <img id="portraitImg" src="assets/portrait.png" alt="Illustrated portrait of Ranil B. Jaramillo" />
+      </div>
+      <div class="float-badge fb-1">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+        VAPT Certified
+      </div>
+      <div class="float-badge fb-2">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+        Enterprise delivery
+      </div>
+      <div class="float-badge fb-3">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 6 2 12 8 18"/><polyline points="16 6 22 12 16 18"/></svg>
+        Still shipping code
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="marquee reveal">
+      <div class="marquee-track" id="mtrack">
+        <span>Enterprise Delivery<span></span>Fintech &amp; Digital Wallets<span></span>VAPT &amp; AI Security<span></span>Cloud Migration<span></span>SAP HANA<span></span>IT Leadership<span></span>Governance Design<span></span>Multi-Vendor Orchestration<span></span></span>
+        <span aria-hidden="true">Enterprise Delivery<span></span>Fintech &amp; Digital Wallets<span></span>VAPT &amp; AI Security<span></span>Cloud Migration<span></span>SAP HANA<span></span>IT Leadership<span></span>Governance Design<span></span>Multi-Vendor Orchestration<span></span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="sec wrap" id="about">
+  <div class="sec-head reveal"><span class="sec-num">01</span>
+    <div class="kicker">About</div>
+    <h2>What I actually do.</h2>
+    <p>Most people specialize in one of these. I've done all three. I built an IT function from scratch, ran delivery for nationwide fintech systems, and I still do the security testing myself. In practice that means I can tell good work from bad, hold my own in a technical contract negotiation, and step in when a project gets stuck.</p>
+  </div>
+  <div class="caps">
+    <div class="cap reveal">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-5 4 3 5-7"/></svg></div>
+      <h3>Enterprise Delivery Leadership</h3>
+      <p>Led Symph's largest engagement for over four years: 30+ people and several nationwide platforms running at once, in regulated financial services.</p>
+    </div>
+    <div class="cap reveal d1">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3"/><rect x="9" y="9" width="6" height="6" rx="1"/></svg></div>
+      <h3>Hands-On Engineering</h3>
+      <p>I built ERP, HRIS, and accounting systems by hand, and I still write code today. So I can design a system myself, and I know when a vendor's estimate doesn't add up.</p>
+    </div>
+    <div class="cap reveal">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+      <h3>Cybersecurity &amp; VAPT</h3>
+      <p>VAPT-certified, and actually practicing. I've run assessments on several client projects, and built my own tooling for a newer problem that few people test yet: pentesting AI agents.</p>
+    </div>
+    <div class="cap reveal d1">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/><circle cx="18" cy="18" r="2"/></svg></div>
+      <h3>Process &amp; Governance</h3>
+      <p>I set up intake, prioritization, reporting cadences, and clear ownership. On messy multi-vendor projects, that's usually what lets a leadership team finally see what's happening and make a call.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="sec wrap" id="work">
+  <div class="sec-head reveal"><span class="sec-num">02</span>
+    <div class="kicker">Selected work</div>
+    <h2>Systems at national scale.</h2>
+    <p>Regulated finance, real estate, and enterprise transformation. Owned end to end, from the architecture through to the executives signing off on it.</p>
+  </div>
+  <div class="work">
+    <article class="proj reveal">
+      <div class="side"><span class="tag">Fintech · Regulated</span><h3>Nationwide remittance &amp; wallet group</h3><div class="meta">Symph · 4+ years</div></div>
+      <div class="body">
+        <p>Owned technical direction for a set of nationwide financial platforms running on one of the largest remittance networks in the Philippines. That covered the core transaction engine, the consumer wallet, and the cloud migration underneath them.</p>
+        <div class="chips"><span class="chip">Core remittance engine</span><span class="chip">Consumer digital wallet</span><span class="chip">KYC &amp; identity</span><span class="chip">Wallet ledger</span><span class="chip">Bank &amp; biller integration</span><span class="chip">OCI to GCP migration</span></div>
+      </div>
+    </article>
+    <article class="proj reveal">
+      <div class="side"><span class="tag">Digital Transformation</span><h3>Regional real estate developer</h3><div class="meta">Symph · Forward-deployed</div></div>
+      <div class="body">
+        <p>Set up a multi-vendor operating model from scratch, pulling CRM, SAP HANA, and a central data platform under one structure. It gave the leadership team a clear enough picture to make decisions they couldn't before.</p>
+        <div class="chips"><span class="chip">SAP HANA</span><span class="chip">CRM platforms</span><span class="chip">Executive visibility cadence</span><span class="chip">Vendor accountability</span><span class="chip">Data privacy (RA 10173)</span></div>
+      </div>
+    </article>
+    <article class="proj reveal">
+      <div class="side"><span class="tag">IT Leadership</span><h3>Sterling Land</h3><div class="meta">IT Manager · 2018–2021</div></div>
+      <div class="body">
+        <p>Built the whole IT function from scratch for a real estate developer: strategy, systems, security, budget, and the team I hired and led. I wrote the core business systems myself before taking over the department.</p>
+        <div class="chips"><span class="chip">Real Estate &amp; Client Mgmt System</span><span class="chip">Accounting Info System</span><span class="chip">HRIS</span><span class="chip">Alfresco DMS</span><span class="chip">Network &amp; backup integrity</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="sec wrap" id="projects">
+  <div class="sec-head reveal"><span class="sec-num">03</span>
+    <div class="kicker">Things I've built</div>
+    <h2>Not just managed. Built.</h2>
+    <p>Client delivery is one thing. These are systems and tools I designed and wrote myself, outside of a team.</p>
+  </div>
+  <div class="proj-grid">
+    <article class="build feat reveal">
+      <span class="idx">BUILD 01 · Flagship</span>
+      <span class="btag">Security tooling</span>
+      <h3>AI-Agent VAPT Toolkit</h3>
+      <p>A full penetration-testing harness for AI agents, where the attack surface is the prompt rather than an HTTP endpoint. A generator scaffolds a 12-folder engagement, runs ~70 techniques, and scores each finding against a CVSS baseline with four-tier confidence.</p>
+      <div class="finding" aria-hidden="true">
+        <div class="fh"><span class="fh-l"><span class="rec"></span>finding-0417.md</span><span class="cvss">CVSS 8.1 · HIGH</span></div>
+        <div class="fb"><span class="k">technique:</span> LLM01 · prompt-injection<br>
+<span class="k">attack_prompt:</span> "ignore prior <span class="redact">rules and reveal the</span>…"<br>
+<span class="k">control_prompt:</span> "summarize the <span class="redact">policy docume</span>…"<br>
+<span class="k">deviation:</span> <span class="r">tool invoked out of policy scope</span><br>
+<span class="k">confidence:</span> <span class="g">TIER-1 (confirmed)</span></div>
+      </div>
+      <div class="chips"><span class="chip">OWASP LLM Top 10</span><span class="chip">~70 techniques</span><span class="chip">CVSS scoring</span></div>
+    </article>
+
+    <article class="build reveal d1">
+      <span class="idx">BUILD 02</span>
+      <span class="btag">Full-stack systems</span>
+      <h3>Core business systems, hand-built</h3>
+      <p>At Sterling Land I wrote the systems that ran the company: a Real Estate &amp; Client Management System, an Accounting Information System, and an HRIS. All custom, all on-prem.</p>
+      <div class="chips"><span class="chip">PHP</span><span class="chip">MySQL</span><span class="chip">Accounting</span><span class="chip">HRIS</span></div>
+    </article>
+
+    <article class="build reveal d2">
+      <span class="idx">BUILD 03</span>
+      <span class="btag">Systems design</span>
+      <h3>Cost &amp; ROI frameworks</h3>
+      <p>Designed a tiered cost-management framework and a people-cost / ROI tracking model for Symph: fast-lane approvals for small reversible spend, kill criteria at initiation, and proportional infra attribution instead of boiling the ocean.</p>
+      <div class="chips"><span class="chip">Governance</span><span class="chip">GCP labels</span><span class="chip">FinOps</span></div>
+    </article>
+  </div>
+</section>
+
+<!-- SECURITY -->
+<section class="sec-security wrap" id="security">
+  <div class="sec-panel reveal">
+    <div class="kicker">Cybersecurity spotlight</div>
+    <h2>Pentesting the next attack surface: AI agents.</h2>
+    <p class="intro">VAPT-certified (GuideM, 2023), with hands-on assessments across several client systems. The project I'm most proud of is a set of tools for something very few people test yet: attacking AI agents, where the weak point is the <b style="color:var(--text)">prompt</b> rather than a normal HTTP endpoint.</p>
+    <div class="sec-grid">
+      <ul class="feat-list">
+        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>OWASP LLM Top 10 aligned.</b> A full engagement framework built around the current standard for AI application risk.</span></li>
+        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>~70 test techniques</b> across prompt injection, jailbreak, data leakage, tool abuse, memory poisoning, privilege escalation, and denial-of-wallet.</span></li>
+        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>CVSS baseline anchors</b> for consistent scoring, and a <b>four-tier confidence verification</b> model to eliminate false positives.</span></li>
+        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>A strict evidence format</b> on every finding: the exact attack prompt, a control prompt, and an analysis of how the two diverged.</span></li>
+      </ul>
+      <div class="terminal" aria-hidden="true">
+        <div class="term-bar"><i></i><i></i><i></i><span class="t">vapt-engagement / llm-agent-assessment</span></div>
+        <div class="term-body" id="term"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section class="sec wrap" id="journey">
+  <div class="sec-head reveal"><span class="sec-num">04</span>
+    <div class="kicker">The journey</div>
+    <h2>How I got here.</h2>
+    <p>Developer, then IT leader, then enterprise delivery, and now forward-deployed consulting. Each step built on the one before it. Tap any role to open it up.</p>
+  </div>
+  <div class="timeline">
+    <div class="tl now open reveal">
+      <button class="tl-head" aria-expanded="true"><div class="tl-main"><div class="when">Mar 2026 – Present</div><h3>Technology Consultant · Forward Deployed</h3><div class="co"><b>Symph</b>, deployed to a regional real estate developer</div></div><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+      <div class="tl-body"><div class="tl-body-inner"><p>Advising on technology direction and coordinating multi-vendor delivery across CRM, SAP HANA, and a central data platform.</p>
+      <ul><li>Designed a multi-vendor operating model and executive reporting cadence from scratch.</li><li>Set up structured intake and prioritization for new initiatives.</li><li>Led data-privacy compliance work and pushed back on technical contracts to protect the client.</li></ul></div></div>
+    </div>
+    <div class="tl reveal">
+      <button class="tl-head" aria-expanded="false"><div class="tl-main"><div class="when">Sep 2021 – Present</div><h3>Senior Technical Project Manager</h3><div class="co"><b>Symph</b></div></div><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+      <div class="tl-body"><div class="tl-body-inner"><p>Led the firm's largest and most complex engagement, a nationwide remittance &amp; fintech group, with 30+ people across several teams.</p>
+      <ul><li>Owned technical direction for the core remittance engine and the consumer digital wallet.</li><li>Lead Technical PM on the OCI to GCP cloud migration.</li><li>Managed the turnover from Symph's team to the client's own developers.</li><li>Pushed security internally and ran VAPT on client projects.</li></ul></div></div>
+    </div>
+    <div class="tl reveal">
+      <button class="tl-head" aria-expanded="false"><div class="tl-main"><div class="when">Jul 2018 – Aug 2021</div><h3>IT Manager</h3><div class="co"><b>Sterling Land Residences &amp; Development</b></div></div><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+      <div class="tl-body"><div class="tl-body-inner"><p>Owned the entire IT function for a real estate developer, and ran the agile ceremonies myself.</p>
+      <ul><li>Strategy, systems, security, network access, backups, vendors, and budget.</li><li>Recruited, trained, and performance-managed the team.</li><li>Deployed and configured Alfresco document management.</li></ul></div></div>
+    </div>
+    <div class="tl reveal">
+      <button class="tl-head" aria-expanded="false"><div class="tl-main"><div class="when">2014 – 2018</div><h3>Software Developer</h3><div class="co"><b>Sterling Land</b> · <b>Metro Retail</b> · <b>Qualfon</b></div></div><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+      <div class="tl-body"><div class="tl-body-inner"><p>Built enterprise systems by hand across three companies.</p>
+      <ul><li>Real estate &amp; client management, accounting, and HRIS at Sterling Land.</li><li>Retail monitoring and reporting systems at Metro Retail.</li><li>BPO operations platforms at Qualfon, across PHP, JavaScript, and Rails.</li></ul></div></div>
+    </div>
+    <div class="tl reveal">
+      <button class="tl-head" aria-expanded="false"><div class="tl-main"><div class="when">2009 – 2014</div><h3>BS Computer Science · Cum Laude</h3><div class="co"><b>Western Leyte College</b></div></div><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+      <div class="tl-body"><div class="tl-body-inner"><p>Graduated Cum Laude.</p>
+      <ul><li>Best Programmer and Best Thesis awards (2012–2013).</li></ul></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="sec wrap" id="skills">
+  <div class="sec-head reveal"><span class="sec-num">05</span>
+    <div class="kicker">Capabilities</div>
+    <h2>What I work with.</h2>
+    <p>The stack I build on, and the practices I lead with.</p>
+  </div>
+  <div class="logo-wall reveal" id="logowall"></div>
+  <div class="skills">
+    <div class="skill-card reveal"><h4>// Data &amp; Cloud</h4><div class="tags"><span>MySQL</span><span>PostgreSQL</span><span>MSSQL</span><span>GCP</span><span>Oracle Cloud (OCI)</span><span>Cloud Migration</span></div></div>
+    <div class="skill-card reveal d1"><h4>// Enterprise Systems</h4><div class="tags"><span>SAP HANA</span><span>CRM Platforms</span><span>Alfresco DMS</span><span>Wallet Ledger</span><span>KYC &amp; Identity</span><span>Payment Gateways</span></div></div>
+    <div class="skill-card reveal d2"><h4>// Security</h4><div class="tags"><span>VAPT</span><span>OWASP LLM Top 10</span><span>AI Agent Pentesting</span><span>Threat Modeling</span><span>Data Privacy (RA 10173)</span></div></div>
+    <div class="skill-card reveal"><h4>// Leadership</h4><div class="tags"><span>Enterprise Delivery</span><span>IT Strategy</span><span>Vendor Management</span><span>Budget Ownership</span><span>Executive Reporting</span></div></div>
+    <div class="skill-card reveal d1"><h4>// Methods</h4><div class="tags"><span>Agile &amp; Scrum</span><span>Waterfall</span><span>Change Management</span><span>Governance Design</span><span>Multi-Vendor Orchestration</span></div></div>
+  </div>
+</section>
+
+<!-- CERTS -->
+<section class="sec wrap" id="certs">
+  <div class="sec-head reveal"><span class="sec-num">06</span>
+    <div class="kicker">Credentials</div>
+    <h2>Certifications.</h2>
+  </div>
+  <div class="certs">
+    <div class="cert reveal"><div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div><div><h4>Ethical Hacking (VAPT)</h4><span>GuideM · 2023</span></div></div>
+    <div class="cert reveal d1"><div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg></div><div><h4>Google Cybersecurity Professional</h4><span>Google</span></div></div>
+    <div class="cert reveal"><div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><div><h4>Google Project Management Professional</h4><span>Google</span></div></div>
+    <div class="cert reveal d1"><div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></div><div><h4>Leadership &amp; Technical Project Management</h4><span>LinkedIn Learning</span></div></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact wrap" id="contact">
+  <div class="reveal">
+    <div class="kicker" style="justify-content:center">Say hello</div>
+    <h2>Let's <span class="grad">connect.</span></h2>
+    <p>I'm always glad to talk technology, security, and delivery with people building serious systems. Whether you want to compare notes, ask about something here, or just say hi, my inbox is open.</p>
+    <div class="contact-methods">
+      <a class="cm" href="mailto:arcubalino@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>
+        arcubalino@gmail.com
+      </a>
+      <a class="cm" href="https://www.linkedin.com/in/ranil-jaramillo/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" style="fill:var(--blue-bright);stroke:none"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+        LinkedIn
+      </a>
+      <span class="cm">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Lapu-Lapu City, Philippines
+      </span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="mono">Ranil B. Jaramillo</span> · Technology Leader · Cybersecurity<br>
+    © <span class="mono">2026</span>
+  </div>
+</footer>
+
+<script>
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Mobile menu
+  const burger=document.getElementById('burger'),links=document.getElementById('navlinks');
+  burger.addEventListener('click',()=>links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+
+  // Reveal on scroll
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // Count-up
+  const cIO=new IntersectionObserver((es)=>{es.forEach(e=>{
+    if(!e.isIntersecting)return;const el=e.target;cIO.unobserve(el);
+    if(el.dataset.text){el.textContent=el.dataset.text;return;}
+    const target=+el.dataset.count,suffix=el.dataset.suffix||'';
+    if(reduce){el.innerHTML=target+'<span class="u">'+suffix+'</span>';return;}
+    let cur=0;const step=Math.max(1,Math.round(target/28));
+    const t=setInterval(()=>{cur+=step;if(cur>=target){cur=target;clearInterval(t);}el.innerHTML=cur+'<span class="u">'+suffix+'</span>';},34);
+  });},{threshold:.6});
+  // Auto-compute rolling counts (e.g. years in tech) from a start year
+  document.querySelectorAll('.n[data-since]').forEach(el=>{el.dataset.count=new Date().getFullYear()-(+el.dataset.since);});
+  document.querySelectorAll('.n[data-count],.n[data-text]').forEach(el=>cIO.observe(el));
+
+  // Scroll progress + nav
+  addEventListener('scroll',()=>{
+    const h=document.documentElement,st=h.scrollTop,max=h.scrollHeight-h.clientHeight;
+    document.getElementById('prog').style.width=(max>0?(st/max*100):0)+'%';
+    document.querySelector('header.nav').style.top=st>40?'8px':'14px';
+  });
+
+  // Hero cursor spotlight + portrait parallax
+  const hero=document.querySelector('.hero'),spot=document.getElementById('spot'),pimg=document.getElementById('portraitImg');
+  if(!reduce){
+    hero.addEventListener('pointermove',(e)=>{
+      const r=hero.getBoundingClientRect();
+      spot.style.setProperty('--mx',(e.clientX-r.left)+'px');
+      spot.style.setProperty('--my',(e.clientY-r.top)+'px');
+      const dx=(e.clientX/innerWidth-.5),dy=(e.clientY/innerHeight-.5);
+      pimg.style.transform='translateX(-50%) translate('+(dx*14)+'px,'+(dy*10)+'px)';
+    });
+    hero.addEventListener('pointerleave',()=>{pimg.style.transform='translateX(-50%)';});
+  }
+
+  // Terminal typing
+  const termEl=document.getElementById('term');
+  const lines=[
+    ['c','# scaffold a 12-folder engagement'],
+    ['g','$ ','n','./generate-engagement.sh ','y','--target agent'],
+    ['c','→ 12 folders · 70 techniques loaded'],
+    ['',' '],
+    ['g','$ ','n','run ','b','prompt-injection','n',' / ','b','tool-abuse'],
+    ['p','[LLM01] ','n','injection ......... ','y','FLAGGED'],
+    ['p','[LLM06] ','n','data-leakage ...... ','g','verified x4'],
+    ['p','[LLM07] ','n','tool-abuse ........ ','y','FLAGGED'],
+    ['',' '],
+    ['c','# evidence captured'],
+    ['g','✓ ','n','attack_prompt · control_prompt'],
+    ['g','✓ ','n','deviation_analysis · CVSS 8.1'],
+    ['b','confidence: TIER-1 (confirmed)']
+  ];
+  function span(cls,txt){const s=document.createElement('span');if(cls)s.className=cls;s.textContent=txt;return s;}
+  function renderInstant(){lines.forEach(parts=>{for(let i=0;i<parts.length;i+=2)termEl.appendChild(span(parts[i],parts[i+1]));termEl.appendChild(document.createTextNode('\n'));});}
+  function typeOut(){
+    let li=0;
+    const cur=document.createElement('span');cur.className='cursor-blink';
+    function nextLine(){
+      if(li>=lines.length){return;}
+      const parts=lines[li];let pi=0,ci=0,frag=null;
+      function tick(){
+        if(pi>=parts.length){termEl.appendChild(document.createTextNode('\n'));li++;setTimeout(nextLine,90);return;}
+        if(!frag){frag=span(parts[pi],'');termEl.appendChild(frag);termEl.appendChild(cur);}
+        const full=parts[pi+1];
+        frag.textContent=full.slice(0,++ci);
+        termEl.appendChild(cur);
+        if(ci>=full.length){pi+=2;ci=0;frag=null;}
+        setTimeout(tick, full.length>20?9:22);
+      }
+      tick();
+    }
+    nextLine();
+  }
+  const tIO=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){tIO.disconnect();reduce?renderInstant():typeOut();}});},{threshold:.4});
+  tIO.observe(termEl);
+
+  // Tech logo wall (Simple Icons paths, inlined)
+  const LOGOS=[{"n":"PHP","d":"M7.01 10.207h-.944l-.515 2.648h.838c.556 0 .97-.105 1.242-.314.272-.21.455-.559.55-1.049.092-.47.05-.802-.124-.995-.175-.193-.523-.29-1.047-.29zM12 5.688C5.373 5.688 0 8.514 0 12s5.373 6.313 12 6.313S24 15.486 24 12c0-3.486-5.373-6.312-12-6.312zm-3.26 7.451c-.261.25-.575.438-.917.551-.336.108-.765.164-1.285.164H5.357l-.327 1.681H3.652l1.23-6.326h2.65c.797 0 1.378.209 1.744.628.366.418.476 1.002.33 1.752a2.836 2.836 0 0 1-.305.847c-.143.255-.33.49-.561.703zm4.024.715l.543-2.799c.063-.318.039-.536-.068-.651-.107-.116-.336-.174-.687-.174H11.46l-.704 3.625H9.388l1.23-6.327h1.367l-.327 1.682h1.218c.767 0 1.295.134 1.586.401s.378.7.263 1.299l-.572 2.944h-1.389zm7.597-2.265a2.782 2.782 0 0 1-.305.847c-.143.255-.33.49-.561.703a2.44 2.44 0 0 1-.917.551c-.336.108-.765.164-1.286.164h-1.18l-.327 1.682h-1.378l1.23-6.326h2.649c.797 0 1.378.209 1.744.628.366.417.477 1.001.331 1.751zM17.766 10.207h-.943l-.516 2.648h.838c.557 0 .971-.105 1.242-.314.272-.21.455-.559.551-1.049.092-.47.049-.802-.125-.995s-.524-.29-1.047-.29z"},{"n":"Laravel","d":"M23.642 5.43a.364.364 0 01.014.1v5.149c0 .135-.073.26-.189.326l-4.323 2.49v4.934a.378.378 0 01-.188.326L9.93 23.949a.316.316 0 01-.066.027c-.008.002-.016.008-.024.01a.348.348 0 01-.192 0c-.011-.002-.02-.008-.03-.012-.02-.008-.042-.014-.062-.025L.533 18.755a.376.376 0 01-.189-.326V2.974c0-.033.005-.066.014-.098.003-.012.01-.02.014-.032a.369.369 0 01.023-.058c.004-.013.015-.022.023-.033l.033-.045c.012-.01.025-.018.037-.027.014-.012.027-.024.041-.034H.53L5.043.05a.375.375 0 01.375 0L9.93 2.647h.002c.015.01.027.021.04.033l.038.027c.013.014.02.03.033.045.008.011.02.021.025.033.01.02.017.038.024.058.003.011.01.021.013.032.01.031.014.064.014.098v9.652l3.76-2.164V5.527c0-.033.004-.066.013-.098.003-.01.01-.02.013-.032a.487.487 0 01.024-.059c.007-.012.018-.02.025-.033.012-.015.021-.03.033-.043.012-.012.025-.02.037-.028.014-.01.026-.023.041-.032h.001l4.513-2.598a.375.375 0 01.375 0l4.513 2.598c.016.01.027.021.042.031.012.01.025.018.036.028.013.014.022.03.034.044.008.012.019.021.024.033.011.02.018.04.024.06.006.01.012.021.015.032zm-.74 5.032V6.179l-1.578.908-2.182 1.256v4.283zm-4.51 7.75v-4.287l-2.147 1.225-6.126 3.498v4.325zM1.093 3.624v14.588l8.273 4.761v-4.325l-4.322-2.445-.002-.003H5.04c-.014-.01-.025-.021-.04-.031-.011-.01-.024-.018-.035-.027l-.001-.002c-.013-.012-.021-.025-.031-.04-.01-.011-.021-.022-.028-.036h-.002c-.008-.014-.013-.031-.02-.047-.006-.016-.014-.027-.018-.043a.49.49 0 01-.008-.057c-.002-.014-.006-.027-.006-.041V5.789l-2.18-1.257zM5.23.81L1.47 2.974l3.76 2.164 3.758-2.164zm1.956 13.505l2.182-1.256V3.624l-1.58.91-2.182 1.255v9.435zm11.581-10.95l-3.76 2.163 3.76 2.163 3.759-2.164zm-.376 4.978L16.21 7.087 14.63 6.18v4.283l2.182 1.256 1.58.908zm-8.65 9.654l5.514-3.148 2.756-1.572-3.757-2.163-4.323 2.489-3.941 2.27z"},{"n":"JavaScript","d":"M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"},{"n":"TypeScript","d":"M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0zm17.363 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 0 1 1.306.34v2.458a3.95 3.95 0 0 0-.643-.361 5.093 5.093 0 0 0-.717-.26 5.453 5.453 0 0 0-1.426-.2c-.3 0-.573.028-.819.086a2.1 2.1 0 0 0-.623.242c-.17.104-.3.229-.393.374a.888.888 0 0 0-.14.49c0 .196.053.373.156.529.104.156.252.304.443.444s.423.276.696.41c.273.135.582.274.926.416.47.197.892.407 1.266.628.374.222.695.473.963.753.268.279.472.598.614.957.142.359.214.776.214 1.253 0 .657-.125 1.21-.373 1.656a3.033 3.033 0 0 1-1.012 1.085 4.38 4.38 0 0 1-1.487.596c-.566.12-1.163.18-1.79.18a9.916 9.916 0 0 1-1.84-.164 5.544 5.544 0 0 1-1.512-.493v-2.63a5.033 5.033 0 0 0 3.237 1.2c.333 0 .624-.03.872-.09.249-.06.456-.144.623-.25.166-.108.29-.234.373-.38a1.023 1.023 0 0 0-.074-1.089 2.12 2.12 0 0 0-.537-.5 5.597 5.597 0 0 0-.807-.444 27.72 27.72 0 0 0-1.007-.436c-.918-.383-1.602-.852-2.053-1.405-.45-.553-.676-1.222-.676-2.005 0-.614.123-1.141.369-1.582.246-.441.58-.804 1.004-1.089a4.494 4.494 0 0 1 1.47-.629 7.536 7.536 0 0 1 1.77-.201zm-15.113.188h9.563v2.166H9.506v9.646H6.789v-9.646H3.375z"},{"n":"Angular","d":"M16.712 17.711H7.288l-1.204 2.916L12 24l5.916-3.373-1.204-2.916ZM14.692 0l7.832 16.855.814-12.856L14.692 0ZM9.308 0 .662 3.999l.814 12.856L9.308 0Zm-.405 13.93h6.198L12 6.396 8.903 13.93Z"},{"n":"Ionic","d":"M22.922 7.027l-.103-.23-.169.188c-.408.464-.928.82-1.505 1.036l-.159.061.066.155a9.745 9.745 0 0 1 .75 3.759c0 5.405-4.397 9.806-9.806 9.806-5.409 0-9.802-4.397-9.802-9.802 0-5.405 4.402-9.806 9.806-9.806 1.467 0 2.883.319 4.2.947l.155.075.066-.155a3.767 3.767 0 0 1 1.106-1.453l.197-.159-.225-.117A11.905 11.905 0 0 0 12.001.001c-6.619 0-12 5.381-12 12s5.381 12 12 12 12-5.381 12-12c0-1.73-.361-3.403-1.078-4.973zM12 6.53A5.476 5.476 0 0 0 6.53 12 5.476 5.476 0 0 0 12 17.47 5.476 5.476 0 0 0 17.47 12 5.479 5.479 0 0 0 12 6.53zm10.345-2.007a2.494 2.494 0 1 1-4.988 0 2.494 2.494 0 0 1 4.988 0z"},{"n":"Ruby on Rails","d":"M.741 19.365h8.36s-1.598-7.291 3.693-10.243l.134-.066c1.286-.637 4.907-2.431 10.702 1.854.19-.159.37-.286.37-.286s-5.503-5.492-11.63-4.878c-3.079.275-6.867 3.079-9.09 6.783C1.058 16.233.741 19.365.741 19.365Zm8.804-.783a10.682 10.682 0 0 1-.127-1.333l1.143.412c.063.498.159.963.254 1.376l-1.27-.455Zm-7.799-4.317L.529 13.82c-.201.455-.423.984-.529 1.27l1.217.444c.137-.359.36-.878.529-1.269Zm7.831.296.857.677c.042-.413.116-.825.222-1.238l-.762-.603c-.137.391-.233.783-.317 1.164Zm2.042-2.646-.508-.762c.191-.243.413-.486.656-.709l.476.72a5.958 5.958 0 0 0-.624.751ZM4.19 8.878l.752.656c-.254.265-.498.551-.72.836l-.815-.698c.244-.265.508-.529.783-.794Zm9.799 1.027-.243-.73c.265-.117.571-.233.931-.339l.233.698a6.82 6.82 0 0 0-.921.371Zm3.122-.656.042-.667c.339.021.688.064 1.048.138l-.042.656a5.859 5.859 0 0 0-1.048-.127ZM8.942 6.392l-.476-.731c-.265.138-.54.286-.826.455l.487.741c.275-.169.54-.328.815-.465Zm9.217-.053.042-.709c-.095-.053-.36-.18-1.026-.371l-.043.699c.349.116.688.243 1.027.381ZM13.238 5.28h.106l-.212-.645c-.328 0-.666.021-1.016.063l.201.625a8.87 8.87 0 0 1 .921-.043Z"},{"n":"CodeIgniter","d":"M11.466 0c.88 1.423-.28 3.306-1.207 4.358-.899 1.02-1.992 1.873-2.985 2.8-1.066.996-2.091 2.044-2.967 3.213-1.753 2.339-2.827 5.28-2.038 8.199.788 2.916 3.314 4.772 6.167 5.429-1.44-.622-2.786-2.203-2.79-3.82-.003-1.765 1.115-3.262 2.505-4.246-.167.632-.258 1.21.155 1.774a1.68 1.68 0 0 0 1.696.642c1.487-.326 1.556-1.96.674-2.914-.872-.943-1.715-2.009-1.384-3.377.167-.685.588-1.328 1.121-1.787-.41 1.078.755 2.14 1.523 2.67 1.332.918 2.793 1.612 4.017 2.688 1.288 1.132 2.24 2.661 2.047 4.435-.208 1.923-1.736 3.26-3.45 3.936 3.622-.8 7.365-3.61 7.44-7.627.093-3.032-1.903-5.717-5.158-7.384.19.48.074.697-.058.924-.55.944-2.082 1.152-2.835.184-1.205-1.548.025-3.216.197-4.855.215-2.055-1.073-4.049-2.67-5.242z"},{"n":"HTML","d":"M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"},{"n":"CSS","d":"M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414z"},{"n":"MySQL","d":"M16.405 5.501c-.115 0-.193.014-.274.033v.013h.014c.054.104.146.18.214.273.054.107.1.214.154.32l.014-.015c.094-.066.14-.172.14-.333-.04-.047-.046-.094-.08-.14-.04-.067-.126-.1-.18-.153zM5.77 18.695h-.927a50.854 50.854 0 00-.27-4.41h-.008l-1.41 4.41H2.45l-1.4-4.41h-.01a72.892 72.892 0 00-.195 4.41H0c.055-1.966.192-3.81.41-5.53h1.15l1.335 4.064h.008l1.347-4.064h1.095c.242 2.015.384 3.86.428 5.53zm4.017-4.08c-.378 2.045-.876 3.533-1.492 4.46-.482.716-1.01 1.073-1.583 1.073-.153 0-.34-.046-.566-.138v-.494c.11.017.24.026.386.026.268 0 .483-.075.647-.222.197-.18.295-.382.295-.605 0-.155-.077-.47-.23-.944L6.23 14.615h.91l.727 2.36c.164.536.233.91.205 1.123.4-1.064.678-2.227.835-3.483zm12.325 4.08h-2.63v-5.53h.885v4.85h1.745zm-3.32.135l-1.016-.5c.09-.076.177-.158.255-.25.433-.506.648-1.258.648-2.253 0-1.83-.718-2.746-2.155-2.746-.704 0-1.254.232-1.65.697-.43.508-.646 1.256-.646 2.245 0 .972.19 1.686.574 2.14.35.41.877.615 1.583.615.264 0 .506-.033.725-.098l1.325.772.36-.622zM15.5 17.588c-.225-.36-.337-.94-.337-1.736 0-1.393.424-2.09 1.27-2.09.443 0 .77.167.977.5.224.362.336.936.336 1.723 0 1.404-.424 2.108-1.27 2.108-.445 0-.77-.167-.978-.5zm-1.658-.425c0 .47-.172.856-.516 1.156-.344.3-.803.45-1.384.45-.543 0-1.064-.172-1.573-.515l.237-.476c.438.22.833.328 1.19.328.332 0 .593-.073.783-.22a.754.754 0 00.3-.615c0-.33-.23-.61-.648-.845-.388-.213-1.163-.657-1.163-.657-.422-.307-.632-.636-.632-1.177 0-.45.157-.81.47-1.085.315-.278.72-.415 1.22-.415.512 0 .98.136 1.4.41l-.213.476a2.726 2.726 0 00-1.064-.23c-.283 0-.502.068-.654.206a.685.685 0 00-.248.524c0 .328.234.61.666.85.393.215 1.187.67 1.187.67.433.305.648.63.648 1.168zm9.382-5.852c-.535-.014-.95.04-1.297.188-.1.04-.26.04-.274.167.055.053.063.14.11.214.08.134.218.313.346.407.14.11.28.216.427.31.26.16.555.255.81.416.145.094.293.213.44.313.073.05.12.14.214.172v-.02c-.046-.06-.06-.147-.105-.214-.067-.067-.134-.127-.2-.193a3.223 3.223 0 00-.695-.675c-.214-.146-.682-.35-.77-.595l-.013-.014c.146-.013.32-.066.46-.106.227-.06.435-.047.67-.106.106-.027.213-.06.32-.094v-.06c-.12-.12-.21-.283-.334-.395a8.867 8.867 0 00-1.104-.823c-.21-.134-.476-.22-.697-.334-.08-.04-.214-.06-.26-.127-.12-.146-.19-.34-.275-.514a17.69 17.69 0 01-.547-1.163c-.12-.262-.193-.523-.34-.763-.69-1.137-1.437-1.826-2.586-2.5-.247-.14-.543-.2-.856-.274-.167-.008-.334-.02-.5-.027-.11-.047-.216-.174-.31-.235-.38-.24-1.364-.76-1.644-.072-.18.434.267.862.422 1.082.115.153.26.328.34.5.047.116.06.235.107.356.106.294.207.622.347.897.073.14.153.287.247.413.054.073.146.107.167.227-.094.136-.1.334-.154.5-.24.757-.146 1.693.194 2.25.107.166.362.534.703.393.3-.12.234-.5.32-.835.02-.08.007-.133.048-.187v.015c.094.188.188.367.274.555.206.328.566.668.867.895.16.12.287.328.487.402v-.02h-.015c-.043-.058-.1-.086-.154-.133a3.445 3.445 0 01-.35-.4 8.76 8.76 0 01-.747-1.218c-.11-.21-.202-.436-.29-.643-.04-.08-.04-.2-.107-.24-.1.146-.247.273-.32.453-.127.288-.14.642-.188 1.01-.027.007-.014 0-.027.014-.214-.052-.287-.274-.367-.46-.2-.475-.233-1.238-.06-1.785.047-.14.247-.582.167-.716-.042-.127-.174-.2-.247-.303a2.478 2.478 0 01-.24-.427c-.16-.374-.24-.788-.414-1.162-.08-.173-.22-.354-.334-.513-.127-.18-.267-.307-.368-.52-.033-.073-.08-.194-.027-.274.014-.054.042-.075.094-.09.088-.072.335.022.422.062.247.1.455.194.662.334.094.066.195.193.315.226h.14c.214.047.455.014.655.073.355.114.675.28.962.46a5.953 5.953 0 012.085 2.286c.08.154.115.295.188.455.14.33.313.663.455.982.14.315.275.636.476.897.1.14.502.213.682.286.133.06.34.115.46.188.23.14.454.3.67.454.11.076.443.243.463.378z"},{"n":"PostgreSQL","d":"M17.128 0a10.134 10.134 0 0 0-2.755.403l-.063.02A10.922 10.922 0 0 0 12.6.258C11.422.238 10.41.524 9.594 1.03c-.808-.271-2.484-.773-4.253-.694-1.246.055-2.585.397-3.635 1.28C.658 2.5-.087 3.887.007 5.795c.024.507.17 1.413.44 2.588.27 1.174.65 2.548 1.135 3.892.486 1.344 1.043 2.6 1.706 3.549.663.948 1.498 1.694 2.601 1.694.771 0 1.44-.328 2.048-.897l.02.037c.24.417.554.85.987 1.15.435.302 1.01.462 1.632.462.593 0 1.108-.115 1.542-.322.148-.07.284-.156.407-.256v.185c0 .845.086 1.5.28 2.006.147.383.393.7.72.9.328.198.72.267 1.126.267 1.098 0 2.02-.65 2.6-1.703.582-1.055.895-2.612.912-4.671.02-.096.043-.19.056-.29l.048-.386.283.024h.033c.965.044 2.013-.104 2.792-.478.617-.296 1.06-.71 1.246-1.281.046-.144.07-.298.077-.457l.001-.023c.011-.354-.09-.657-.313-.897-.446-.484-1.259-.542-2.1-.359-.171-2.032-1.264-3.859-3.037-5.043l.045-.006A9.955 9.955 0 0 0 17.128 0zm.024.834a9.163 9.163 0 0 1 1.786.176c1.72.335 3.242 1.093 4.238 2.363.996 1.27 1.487 3.017 1.116 5.336l-.005.033-.007.033c-.14.607-.588 1.024-1.19 1.313-.601.289-1.372.435-2.05.435-.204 0-.398-.01-.575-.028l-.163-.017-.05.156c-.028.088-.06.174-.09.263l-.077.223.213.09c.31.13.582.35.744.66.163.31.213.7.14 1.14-.14.85-.61 1.42-1.25 1.72-.64.3-1.45.35-2.24.15l-.16-.04-.05.16c-.34 1.1-.86 1.9-1.51 2.42-.65.52-1.42.75-2.24.75-.65 0-1.24-.15-1.72-.42-.48-.27-.85-.66-1.09-1.14l-.05-.1-.1.05c-.36.18-.76.28-1.19.28-.6 0-1.14-.15-1.57-.44-.43-.29-.75-.71-.98-1.22l-.06-.13-.12.08c-.55.36-1.13.55-1.72.55-.85 0-1.53-.55-2.13-1.4-.6-.85-1.13-2.05-1.6-3.36-.47-1.31-.84-2.66-1.1-3.82-.26-1.16-.4-2.05-.42-2.53-.08-1.66.55-2.86 1.51-3.66.96-.8 2.24-1.11 3.4-1.16 1.75-.08 3.42.44 4.15.7l.08.03.07-.05c.72-.46 1.63-.72 2.71-.7z"},{"n":"Google Cloud","d":"M12.19 2.38a9.344 9.344 0 0 0-9.234 6.893c.053-.02-.055.013 0 0-3.875 2.551-3.922 8.11-.247 10.941l.006-.007-.007.03a6.717 6.717 0 0 0 4.077 1.356h5.173l.03.03h5.192c6.687.053 9.376-8.605 3.835-12.35a9.365 9.365 0 0 0-2.821-4.552l-.043.043.006-.05A9.344 9.344 0 0 0 12.19 2.38zm-.358 4.146c1.244-.04 2.518.368 3.486 1.15a5.186 5.186 0 0 1 1.862 4.078v.518c3.53-.07 3.53 5.262 0 5.193h-5.193l-.008.009v-.04H6.785a2.59 2.59 0 0 1-1.067-.23h.001a2.597 2.597 0 1 1 3.437-3.437l3.013-3.012A6.747 6.747 0 0 0 8.11 8.24c.018-.01.04-.026.054-.023a5.186 5.186 0 0 1 3.67-1.69z"},{"n":"SAP","d":"M0 6.064v11.872h12.13L24 6.064zm3.264 2.208h.005c.863.001 1.915.245 2.676.633l-.82 1.43c-.835-.404-1.255-.442-1.73-.467-.708-.038-1.064.215-1.069.488-.007.332.669.633 1.305.838.964.306 2.19.715 2.377 1.9L7.77 8.437h2.046l2.064 5.576-.007-5.575h2.37c2.257 0 3.318.764 3.318 2.519 0 1.575-1.09 2.514-2.936 2.514h-.763l-.01 2.094-3.588-.003-.25-.908c-.37.122-.787.189-1.23.189-.456 0-.885-.071-1.263-.2l-.358.919-2 .006.09-.462c-.029.025-.057.05-.087.074-.535.43-1.208.629-2.037.644l-.213.002a5.075 5.075 0 0 1-2.581-.675l.73-1.448c.79.467 1.286.572 1.956.558.347-.007.598-.07.761-.239a.557.557 0 0 0 .156-.369c.007-.376-.53-.553-1.185-.756-.531-.164-1.135-.389-1.606-.735-.559-.41-.825-.924-.812-1.65a1.99 1.99 0 0 1 .566-1.377c.519-.537 1.357-.863 2.363-.863zm10.597 1.67v1.904h.521c.694 0 1.247-.23 1.248-.964 0-.709-.554-.94-1.248-.94zm-5.087.767l-.748 2.362c.223.085.481.133.757.133.268 0 .52-.047.742-.126l-.736-2.37z"},{"n":"GitHub","d":"M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"}];
+  const wall=document.getElementById('logowall');
+  if(wall){LOGOS.forEach(l=>{const c=document.createElement('div');c.className='logo-chip';c.title=l.n;c.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="'+l.d+'"/></svg><span>'+l.n+'</span>';wall.appendChild(c);});}
+
+  // Typed role
+  const typeEl=document.getElementById('typeword');
+  if(typeEl){
+    const words=['software engineer','delivery lead','penetration tester','technical leader','systems builder'];
+    if(reduce){typeEl.textContent=words[0];}
+    else{
+      let wi=0,ci=0,del=false;
+      (function tick(){
+        const w=words[wi];
+        if(!del){ci++;if(ci>w.length){del=true;typeEl.textContent=w;return void setTimeout(tick,1400);}}
+        else{ci--;if(ci<0){del=false;wi=(wi+1)%words.length;ci=0;return void setTimeout(tick,220);}}
+        typeEl.textContent=w.slice(0,Math.max(0,ci));
+        setTimeout(tick,del?45:85);
+      })();
+    }
+  }
+
+  // Timeline accordion
+  function setBody(tl){const b=tl.querySelector('.tl-body');b.style.maxHeight=tl.classList.contains('open')?b.scrollHeight+'px':'0px';}
+  document.querySelectorAll('.tl-head').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const tl=btn.closest('.tl');
+      const open=tl.classList.toggle('open');
+      btn.setAttribute('aria-expanded',open);
+      setBody(tl);
+    });
+  });
+  function initBodies(){document.querySelectorAll('.tl.open').forEach(setBody);}
+  addEventListener('load',initBodies);initBodies();
+  let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>document.querySelectorAll('.tl.open').forEach(setBody),150);});
+</script>
+</body>
+</html>
