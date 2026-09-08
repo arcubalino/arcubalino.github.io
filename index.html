@@ -303,6 +303,16 @@
   .build h3{font-size:21px;margin-bottom:9px}
   .build p{color:var(--muted);font-size:14.5px;margin-bottom:16px}
   .build .chips{margin-top:auto}
+  .oss{margin-top:20px;border:1px solid var(--line);border-radius:var(--r);padding:26px 30px;background:var(--surface);display:flex;align-items:center;gap:28px;flex-wrap:wrap;transition:.3s}
+  .oss:hover{border-color:var(--line-strong);background:var(--surface-2)}
+  .oss img{width:190px;height:auto;flex:none}
+  .oss .oss-body{flex:1;min-width:260px}
+  .oss .oss-tag{font-family:'JetBrains Mono';font-size:11.5px;color:var(--blue-bright);letter-spacing:.06em;display:block;margin-bottom:9px}
+  .oss p{color:var(--muted);font-size:14.5px;margin-bottom:14px}
+  .oss .oss-links{display:flex;gap:18px;flex-wrap:wrap;font-size:13.5px}
+  .oss .oss-links a{color:var(--blue-bright);border-bottom:1px solid transparent;transition:.2s}
+  .oss .oss-links a:hover{border-bottom-color:var(--blue-bright)}
+  @media(max-width:720px){.oss{padding:22px;gap:20px}.oss img{width:150px}}
   .finding{margin:6px 0 18px;border:1px solid var(--line-strong);border-radius:12px;background:#05070d;font-family:'JetBrains Mono';font-size:12.5px;overflow:hidden}
   .finding .fh{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.02);color:var(--muted-2)}
   .finding .cvss{color:#fbbf24;font-weight:600}
@@ -514,6 +524,18 @@
       <p>Designed a tiered cost-management framework and a people-cost / ROI tracking model for Symph: fast-lane approvals for small reversible spend, kill criteria at initiation, and proportional infra attribution instead of boiling the ocean.</p>
       <div class="chips"><span class="chip">Governance</span><span class="chip">GCP labels</span><span class="chip">FinOps</span></div>
     </article>
+  </div>
+
+  <div class="oss reveal">
+    <img src="assets/bettergov-horizontal-white.webp" alt="BetterGov.ph" width="190" height="48" loading="lazy">
+    <div class="oss-body">
+      <span class="oss-tag">OPEN SOURCE · CONTRIBUTOR</span>
+      <p>I contribute to BetterGov.ph, a volunteer project rebuilding Philippine government digital services in the open. My work there sits on the security and CI side of the codebase.</p>
+      <div class="oss-links">
+        <a href="https://github.com/bettergovph/bettergov" target="_blank" rel="noopener">bettergovph/bettergov</a>
+        <a href="https://github.com/bettergovph/bettergov/pulls?q=is%3Apr+author%3Aarcubalino" target="_blank" rel="noopener">My pull requests</a>
+      </div>
+    </div>
   </div>
 </section>
 
