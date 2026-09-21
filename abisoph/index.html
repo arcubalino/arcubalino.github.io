@@ -1,0 +1,285 @@
+<title>About Abiso</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --brand: #0038a8;
+    --brand-deep: #0b2559;
+    --red: #ce1126;
+    --gold: #fcd116;
+    --ink: #0d1b34;
+    --muted: #55617a;
+    --ground: #eef1f7;
+    --card: #ffffff;
+    --line: #dbe1ec;
+    --frame: #f4f6fb;
+    --shadow: 24px 40px 80px -40px rgba(11, 37, 89, .45);
+    --maxw: 1120px;
+    --disp: "Poppins", "Trebuchet MS", sans-serif;
+    --body: "Instrument Sans", system-ui, -apple-system, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --brand: #6f9bff;
+      --brand-deep: #d8e3ff;
+      --ink: #eaf0fb;
+      --muted: #9fb0cc;
+      --ground: #070d1a;
+      --card: #101a30;
+      --line: #223252;
+      --frame: #0b1424;
+      --shadow: 24px 40px 80px -44px rgba(0, 0, 0, .8);
+    }
+  }
+  :root[data-theme="dark"] {
+    --brand: #6f9bff;
+    --brand-deep: #d8e3ff;
+    --ink: #eaf0fb;
+    --muted: #9fb0cc;
+    --ground: #070d1a;
+    --card: #101a30;
+    --line: #223252;
+    --frame: #0b1424;
+    --shadow: 24px 40px 80px -44px rgba(0, 0, 0, .8);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding-inline: 20px; }
+
+  /* Header */
+  header.site {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+    background: color-mix(in srgb, var(--ground) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .site .wrap { display: flex; align-items: center; justify-content: space-between; padding-block: 14px; }
+  .logo { display: flex; align-items: center; gap: 10px; font-family: var(--disp); font-weight: 800; font-size: 1.3rem; color: var(--brand); letter-spacing: -.02em; text-decoration: none; }
+  .logo svg { display: block; }
+  .site nav a { color: var(--muted); text-decoration: none; font-weight: 600; font-size: .92rem; }
+  .site nav a:hover { color: var(--ink); }
+  .live-dot { display: inline-flex; align-items: center; gap: 7px; font-size: .82rem; font-weight: 600; color: var(--muted); }
+  .live-dot i { width: 8px; height: 8px; border-radius: 50%; background: var(--red); box-shadow: 0 0 0 0 rgba(206,17,38,.5); animation: pulse 2.4s infinite; }
+  @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(206,17,38,.5);} 70%{box-shadow:0 0 0 9px rgba(206,17,38,0);} 100%{box-shadow:0 0 0 0 rgba(206,17,38,0);} }
+  @media (prefers-reduced-motion: reduce) { .live-dot i { animation: none; } }
+
+  /* Hero */
+  .hero { padding-block: clamp(48px, 8vw, 92px) 30px; }
+  .eyebrow { font-family: var(--disp); text-transform: uppercase; letter-spacing: .16em; font-size: .74rem; font-weight: 600; color: var(--brand); margin: 0 0 18px; }
+  h1 { font-family: var(--disp); font-weight: 800; letter-spacing: -.03em; line-height: 1.04; font-size: clamp(2.1rem, 6vw, 3.7rem); margin: 0; text-wrap: balance; max-width: 15ch; }
+  h1 .u { color: var(--brand); }
+  .tagline { font-family: var(--disp); font-weight: 700; letter-spacing: -.02em; font-size: clamp(1.2rem, 3vw, 1.6rem); color: var(--red); margin: 20px 0 0; }
+  .lede { font-size: clamp(1.05rem, 2.4vw, 1.28rem); color: var(--muted); max-width: 60ch; margin: 22px 0 0; }
+  .flag { height: 5px; width: 128px; border-radius: 5px; margin-top: 30px;
+    background: linear-gradient(90deg, var(--brand) 0 34%, var(--red) 34% 67%, var(--gold) 67% 100%); }
+
+  /* Frames */
+  figure { margin: 0; }
+  .browser { background: var(--frame); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow); overflow: hidden; }
+  .browser .bar { display: flex; align-items: center; gap: 7px; padding: 12px 15px; border-bottom: 1px solid var(--line); background: color-mix(in srgb, var(--frame) 60%, var(--card)); }
+  .browser .bar span { width: 11px; height: 11px; border-radius: 50%; background: var(--line); }
+  .browser .bar span:nth-child(1){ background:#ff5f57; } .browser .bar span:nth-child(2){ background:#febc2e; } .browser .bar span:nth-child(3){ background:#28c840; }
+  .browser .bar b { margin-left: 10px; font-weight: 500; font-size: .78rem; color: var(--muted); font-family: var(--body); }
+  .browser img { display: block; width: 100%; }
+  .hero-shot { margin-top: 42px; }
+
+  figcaption { color: var(--muted); font-size: .9rem; margin-top: 12px; text-align: center; }
+
+  /* Section scaffolding */
+  section { padding-block: clamp(46px, 8vw, 86px); }
+  .band { background: var(--card); border-block: 1px solid var(--line); }
+  .kicker { font-family: var(--disp); text-transform: uppercase; letter-spacing: .15em; font-size: .74rem; font-weight: 600; color: var(--red); margin: 0 0 12px; }
+  h2 { font-family: var(--disp); font-weight: 700; letter-spacing: -.02em; font-size: clamp(1.6rem, 4vw, 2.4rem); margin: 0; text-wrap: balance; max-width: 20ch; }
+  .section-intro { color: var(--muted); font-size: 1.08rem; max-width: 56ch; margin: 16px 0 0; }
+  .head { margin-bottom: 40px; }
+
+  .duo { display: grid; grid-template-columns: 1fr 1.35fr; gap: 34px; align-items: center; }
+  .duo.rev { grid-template-columns: 1.35fr 1fr; }
+  .duo.rev .txt { order: 2; }
+
+  /* Prose */
+  .prose p { color: var(--muted); font-size: 1.08rem; max-width: 60ch; margin: 0 0 18px; }
+  .prose p:last-child { margin-bottom: 0; }
+
+  /* Value cards */
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 8px; }
+  .cardv { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 26px; }
+  .band .cardv { background: var(--ground); }
+  .cardv h3 { font-family: var(--disp); font-weight: 600; font-size: 1.2rem; letter-spacing: -.01em; margin: 0 0 8px; }
+  .cardv p { margin: 0; color: var(--muted); font-size: 1rem; }
+
+  /* Two-up text blocks */
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; }
+  .split .block h3 { font-family: var(--disp); font-weight: 700; font-size: clamp(1.3rem, 3vw, 1.7rem); letter-spacing: -.02em; margin: 0 0 12px; }
+  .split .block p { margin: 0; color: var(--muted); font-size: 1.06rem; }
+  .split .block .tag { font-family: var(--disp); text-transform: uppercase; letter-spacing: .15em; font-size: .72rem; font-weight: 600; color: var(--brand); margin: 0 0 12px; }
+
+  /* CTA */
+  .cta { text-align: center; }
+  .cta h2 { margin-inline: auto; }
+  .cta p { color: var(--muted); font-size: 1.1rem; max-width: 50ch; margin: 16px auto 0; }
+  .actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 30px; }
+  .btn { font-family: var(--disp); font-weight: 600; text-decoration: none; padding: 13px 24px; border-radius: 12px; font-size: .98rem; }
+  .btn.primary { background: var(--brand); color: #fff; }
+  .btn.primary:hover { background: var(--brand-deep); }
+  .btn.ghost { border: 1px solid var(--line); color: var(--ink); }
+  .btn.ghost:hover { border-color: var(--brand); color: var(--brand); }
+
+  footer.site { border-top: 1px solid var(--line); padding-block: 34px; color: var(--muted); font-size: .86rem; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 26px; justify-content: space-between; align-items: center; }
+
+  @media (max-width: 760px) {
+    .duo, .duo.rev, .cards, .split { grid-template-columns: 1fr; }
+    .duo.rev .txt { order: 0; }
+    .section-intro, .lede, .prose p, .split .block p { max-width: none; }
+  }
+</style>
+
+<header class="site">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Abiso">
+      <svg width="22" height="26" viewBox="0 0 22 26" aria-hidden="true"><path d="M11 0C4.9 0 0 4.8 0 10.8 0 18.9 11 26 11 26s11-7.1 11-15.2C22 4.8 17.1 0 11 0z" fill="#0038a8"/><path d="M11 26s6.4-4.1 9.2-10.2L11 8.5V26z" fill="#ce1126"/><circle cx="11" cy="10.6" r="5.4" fill="#fff"/><circle cx="11" cy="10.6" r="2.2" fill="#fcd116"/></svg>
+      abiso
+    </a>
+    <nav aria-label="Primary">
+      <span class="live-dot"><i></i>Live for Mactan Electric Company</span>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">About Abiso PH</p>
+      <h1>One clear place to know about <span class="u">power interruptions</span> before they reach you.</h1>
+      <p class="tagline">Know before it happens.</p>
+      <p class="lede">Abiso is a free public map of power interruptions in the Philippines, plus a simple portal utilities use to post them. It is live today for Mactan Electric Company (MECO) in the Lapu-Lapu, Cordova and Mactan area.</p>
+      <div class="flag" aria-hidden="true"></div>
+      <figure class="hero-shot">
+        <div class="browser">
+          <div class="bar"><span></span><span></span><span></span><b>abisoph.com/meco</b></div>
+          <img src="images/01-public-map.png" alt="Abiso public map showing MECO's franchise area with affected feeders shaded red and an upcoming outage in amber" width="1280" height="800">
+        </div>
+        <figcaption>The public map for Mactan Electric Company. Affected feeders shade red, scheduled work glows amber.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="head">
+        <p class="kicker">The problem</p>
+        <h2>Outage news is scattered, easy to miss, and often unclear.</h2>
+      </div>
+      <div class="prose">
+        <p>During an outage, Filipinos hunt through scattered Facebook posts to find out if it affects their street, whether it is planned, and when power is coming back. The information is hard to search, easy to miss, and often unclear.</p>
+        <p>Utilities, meanwhile, have no clean public channel and repeat the same answers by hand.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="head">
+        <p class="kicker">What Abiso does</p>
+        <h2>One always-current map, and a portal that makes posting simple.</h2>
+        <p class="section-intro">Anyone can open the map, no app and no login. Utilities get a guided way to post interruptions and keep an orderly record of them.</p>
+      </div>
+      <div class="cards">
+        <div class="cardv">
+          <h3>Open to everyone</h3>
+          <p>One always-current map anyone can open, with no app and no login. Just one link to check what is out, where, and until when.</p>
+        </div>
+        <div class="cardv">
+          <h3>A page for every notice</h3>
+          <p>Each notice has its own page with a plain-language reason, the exact affected area, the landmarks people recognise, and a live status.</p>
+        </div>
+        <div class="cardv">
+          <h3>Simple for utilities</h3>
+          <p>Utilities get a guided portal to post interruptions in minutes and keep an orderly record of them, with no GIS work required.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="split">
+        <div class="block">
+          <p class="tag">Mission</p>
+          <h3>Clear, current, and easy to find.</h3>
+          <p>To make official power-interruption information clear, current, and easy to find for every Filipino household and business. Abiso's promise is to be the official source, relayed faithfully. It does not speak for a utility, it carries each utility's own advisories accurately.</p>
+        </div>
+        <div class="block">
+          <p class="tag">Vision</p>
+          <h3>One trusted place to plan your day.</h3>
+          <p>Start with power, then grow into the other interruptions people plan their day around, such as water service and road closures, so there is one trusted place to know before it happens.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="head">
+        <p class="kicker">Where Abiso started</p>
+        <h2>From a personal map of Mactan to a platform for utilities.</h2>
+      </div>
+      <div class="prose">
+        <p>Abiso began as a personal project, the "MECO Feeder Map," built in 2026 to make Mactan's power advisories easier to follow. It grew into Abiso PH, a platform any Philippine electric utility can use for its own franchise area.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="head">
+        <p class="kicker">What we value</p>
+        <h2>Trust and faithful sourcing, above all.</h2>
+      </div>
+      <div class="cards">
+        <div class="cardv">
+          <h3>Faithful sourcing</h3>
+          <p>Trust comes first. Abiso carries each utility's own official notices accurately, word for word with the advisory it relays.</p>
+        </div>
+        <div class="cardv">
+          <h3>Independence</h3>
+          <p>Abiso relays each utility's own official notices and is not affiliated with a utility unless stated.</p>
+        </div>
+        <div class="cardv">
+          <h3>Free and open</h3>
+          <p>Free and open for the public to use. Anyone can check the map, anytime, without an account.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <p class="kicker" style="color:var(--brand);">See it for yourself</p>
+      <h2>Know before it happens.</h2>
+      <p>Open the live map for Mactan Electric Company, or see how utilities post their advisories.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://abisoph.com" target="_blank" rel="noopener">See the live map</a>
+        <a class="btn ghost" href="./how-to-use">See how it works</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span class="logo" style="font-size:1.05rem;">abiso</span>
+    <span>Abiso relays each utility's own official advisories. Independent, and free for the public to use.</span>
+    <span>abisoph.com</span>
+  </div>
+</footer>
