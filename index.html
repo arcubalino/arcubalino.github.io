@@ -486,6 +486,14 @@
 </section>
 
 <!-- PROJECTS -->
+<style>
+  .build.link-card{position:relative;cursor:pointer;transition:transform .18s ease}
+  .build.link-card:hover{transform:translateY(-3px)}
+  .build.link-card .stretch::after{content:"";position:absolute;inset:0;z-index:1;border-radius:inherit}
+  .build.link-card .oss-links a{position:relative;z-index:2}
+  .abiso-mark{margin:0}
+  .abiso-mark img{height:44px;width:auto;display:block;margin:6px 0 2px}
+</style>
 <section class="sec wrap" id="projects">
   <div class="sec-head reveal"><span class="sec-num">03</span>
     <div class="kicker">Things I've built</div>
@@ -509,10 +517,10 @@
       <div class="chips"><span class="chip">OWASP LLM Top 10</span><span class="chip">~70 techniques</span><span class="chip">CVSS scoring</span></div>
     </article>
 
-    <article class="build reveal d1">
+    <article class="build reveal d1 link-card">
       <span class="idx">BUILD 02 · Shipped</span>
       <span class="btag">Civic SaaS</span>
-      <h3>Abiso PH</h3>
+      <h3 class="abiso-mark"><a href="abisoph/" class="stretch" aria-label="About Abiso PH"><img src="assets/abiso-logo.svg" alt="Abiso PH" width="150" height="64"></a></h3>
       <p>A live public map of power interruptions in the Philippines, with a portal utilities use to post them. I built the whole thing solo: the public map, the multi-tenant operator portal, and the reporting. Live today for Mactan Electric Company.</p>
       <div class="chips"><span class="chip">Live SaaS</span><span class="chip">Multi-tenant</span><span class="chip">Interactive maps</span><span class="chip">Public + admin</span></div>
       <div class="oss-links">
