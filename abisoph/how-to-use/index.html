@@ -117,16 +117,16 @@
   .phone { width: min(300px, 78%); border: 9px solid var(--brand-deep); border-radius: 34px; overflow: hidden; box-shadow: var(--shadow); background: var(--brand-deep); }
   .phone img { display: block; width: 100%; height: auto; }
 
-  /* Steps */
-  .step { display: grid; grid-template-columns: 1.25fr 1fr; gap: 40px; align-items: center; padding-block: 34px; border-top: 1px solid var(--line); }
+  /* Steps: text header, then a large full-width screenshot */
+  .step, .showcase { display: flex; flex-direction: column; gap: 22px; padding-block: 46px; border-top: 1px solid var(--line); }
   .step:first-of-type { border-top: 0; }
-  .step .media { order: 1; }
-  .step.rev .media { order: 2; }
+  .step .txt, .showcase .txt { order: 0; max-width: 64ch; }
+  .step .media, .showcase .media { order: 1; }
   .num { display: inline-flex; align-items: baseline; gap: 10px; font-family: var(--disp); margin-bottom: 14px; }
   .num b { font-size: 2.3rem; font-weight: 800; color: var(--brand); letter-spacing: -.03em; line-height: 1; }
   .num em { font-style: normal; text-transform: uppercase; letter-spacing: .14em; font-size: .72rem; font-weight: 600; color: var(--muted); }
   .step h3 { font-family: var(--disp); font-weight: 600; font-size: 1.35rem; letter-spacing: -.01em; margin: 0 0 8px; }
-  .step p { margin: 0; color: var(--muted); font-size: 1.02rem; max-width: 42ch; }
+  .step p { margin: 0; color: var(--muted); font-size: 1.02rem; max-width: 64ch; }
 
   /* Onboarding callout */
   .callout { display: grid; grid-template-columns: 1fr 1.2fr; gap: 34px; align-items: center;
@@ -149,8 +149,16 @@
   footer.site { border-top: 1px solid var(--line); padding-block: 34px; color: var(--muted); font-size: .86rem; }
   footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 26px; justify-content: space-between; align-items: center; }
 
+  /* Tap any screenshot to enlarge (readable on phones) */
+  .browser, .phone { cursor: zoom-in; }
+  .lb { position: fixed; inset: 0; background: rgba(8,12,22,.94); display: none; z-index: 100; overflow: auto; cursor: zoom-out; -webkit-overflow-scrolling: touch; }
+  .lb.open { display: block; }
+  .lb-inner { min-height: 100%; display: flex; align-items: flex-start; justify-content: center; padding: clamp(12px, 4vw, 40px); }
+  .lb img { max-width: none; width: min(1500px, max(900px, 92vw)); height: auto; border-radius: 10px; box-shadow: 0 30px 80px rgba(0,0,0,.6); }
+  .lb-hint { position: fixed; top: 14px; right: 18px; color: rgba(255,255,255,.82); font-size: .85rem; }
+
   @media (max-width: 760px) {
-    .duo, .duo.rev, .step, .step.rev, .callout { grid-template-columns: 1fr; }
+    .duo, .duo.rev, .callout { grid-template-columns: 1fr; }
     .duo.rev .txt, .step.rev .media, .step .media { order: 0; }
     .step p, .section-intro, .lede { max-width: none; }
     .callout { text-align: left; }
@@ -208,7 +216,7 @@
         </div>
       </div>
 
-      <div class="duo rev" style="margin-top:52px;">
+      <div class="showcase" style="margin-top:36px;border-top:0;padding-block:0;">
         <div class="media">
           <figure>
             <div class="browser">
@@ -313,5 +321,21 @@
     <span>abisoph.com</span>
   </div>
 </footer>
+
+<div class="lb" id="lb" aria-hidden="true"><span class="lb-hint">Tap anywhere to close</span><div class="lb-inner"><img alt=""></div></div>
+<script>
+(function () {
+  var lb = document.getElementById('lb'), big = lb.querySelector('img');
+  function open(src, alt) { big.src = src; big.alt = alt || ''; lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); }
+  function close() { lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); big.removeAttribute('src'); }
+  document.querySelectorAll('.browser, .phone').forEach(function (frame) {
+    var i = frame.querySelector('img');
+    if (!i) return;
+    frame.addEventListener('click', function () { open(i.currentSrc || i.src, i.alt); });
+  });
+  lb.addEventListener('click', close);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+})();
+</script>
 </body>
 </html>
